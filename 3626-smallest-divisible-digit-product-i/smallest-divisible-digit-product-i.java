@@ -1,11 +1,11 @@
 class Solution {
     public int smallestNumber(int n, int t) {
-        while(true){
+        while(n<=100){
             int pro=productDig(n);
             if(pro%t==0)return n;
             n++;
         }
-     
+     return -1;
     }
     private int productDig(int num){
         int pro=1;
