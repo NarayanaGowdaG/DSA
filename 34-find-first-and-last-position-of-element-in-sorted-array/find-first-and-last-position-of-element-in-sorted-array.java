@@ -1,41 +1,46 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-         int first = lowerBound(nums, target);  
-        if(first == nums.length || nums[first] != target) return new int[]{-1, -1}; 
-        int last = upperBound(nums, target) - 1;  
-        
-        return new int[]{first, last};
+        int first = firstOccurrence(nums, target); 
+        if(first == -1) return new int[]{-1, -1};  
+        int last = lastOccurrence(nums, target);  
+return new int[]{first, last}; 
         
     }
-        private int lowerBound(int[] nums, int target) {
+    private int firstOccurrence(int[] nums, int target) {
         int low = 0, high = nums.length - 1;
-        int ans = nums.length; 
+        int first = -1;
         while(low <= high) {
-            int mid = (low + high) / 2;
-            if(nums[mid] >= target) {
-                ans = mid;  
-                high = mid - 1;  
-            }
-            else {
-                low = mid + 1; 
-            }
-        }
-        return ans;
-    }
-
-    private int upperBound(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        int ans = nums.length;  
-        while(low <= high) {
-            int mid = (low + high) / 2;
-            if(nums[mid] > target) {
-                ans = mid;  
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                first = mid;
                 high = mid - 1;  
             } 
+            else if(nums[mid] < target) {
+                low = mid + 1;  
+            } 
             else {
-                low = mid + 1;
+                high = mid - 1;  
             }
         }
-        return ans;
+        return first;
     }
+    private int lastOccurrence(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        int last = -1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                last = mid;
+                low = mid + 1;
+            } 
+            else if(nums[mid] < target) {
+                low = mid + 1;  
+            } 
+            else {
+                high = mid - 1; 
+            }
+        }
+        return last;
+    }
+
 }
