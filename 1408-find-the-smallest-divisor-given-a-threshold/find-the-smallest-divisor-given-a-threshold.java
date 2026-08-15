@@ -8,9 +8,9 @@ class Solution {
             }
             return sum;
         }
-    public int smallestDivisor(int[] nums, int limit) {
+    public int smallestDivisor(int[] nums, int threshold) {
         int n=nums.length;
-        if(n>limit)return -1;
+        if(n>threshold)return -1;
         int maxi=Integer.MIN_VALUE;
         for(int i=0;i<n;i++){
             maxi=Math.max(maxi,nums[i]);
@@ -20,7 +20,7 @@ class Solution {
  while(low<=high){
     int mid=(low+high)/2;
     int val=sumOfDiv(nums,mid);
-    if(val<=limit)high=mid-1;
+    if(val<=threshold)high=mid-1;
     else low=mid+1;
 
  }
