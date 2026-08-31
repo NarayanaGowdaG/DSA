@@ -17,5 +17,6 @@ class Solution {
     func(ind,nums,list,sum-nums[ind],ans,n);
     list.remove(list.size()-1);
     func(ind+1,nums,list,sum,ans,n);
+    
 }
 }
