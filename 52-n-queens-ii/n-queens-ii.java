@@ -1,8 +1,8 @@
 class Solution {
+    int cnt=0;
     public int totalNQueens(int n) {
          List<List<String>> ans=new ArrayList<>();
          List<String> board=new ArrayList<>();
-         int op=0;
          String str="";
          for(int i=0;i<n;i++){
             str=str+".";
@@ -10,26 +10,25 @@ class Solution {
          for(int i=0;i<n;i++){
             board.add(str);
          }
-        op= func(0,board,ans,n);
-         return op;
+        func(0,board,ans,n);
+         return cnt;
  }
- private int func(int row, List<String> board,  List<List<String>> ans,int n){
-    int cnt=0;
+ private void func(int row, List<String> board,  List<List<String>> ans,int n){
     if(row==n){
         ans.add(new ArrayList<>(board));
-        return 1;
+        cnt++;
+        return;
     }
     for(int col=0;col<n;col++){
         if(placingIsPossible(board,row,col,n)){
              char[] rowArr = board.get(row).toCharArray();
                 rowArr[col] = 'Q';
                 board.set(row, new String(rowArr));
-               cnt+= func(row + 1, board, ans,n);
+                func(row + 1, board, ans,n);
                   rowArr[col] = '.';
                 board.set(row, new String(rowArr));
         }
     }
-    return cnt;
  }
  private boolean placingIsPossible(List<String> board,int row,int col,int n){
     int r,c;
