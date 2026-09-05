@@ -30,20 +30,20 @@ class Solution {
  }
  private boolean placingIsPossible(List<String> board,int row,int col,int n){
     int r,c;
-     r=row-1;
+     r=row;
     while(r>=0){
         if(board.get(r).charAt(col)=='Q')return false;
         r--;
     }
-     r=row-1;
-     c=col+1;
+     r=row;
+     c=col;
      while(r>=0 && c<n){
         if(board.get(r).charAt(c)=='Q')return false;
         r--;
         c++;
     }
-    r=row-1;
-    c=col-1;
+    r=row;
+    c=col;
      while(r>=0 && c>=0){
         if(board.get(r).charAt(c)=='Q')return false;
         r--;
