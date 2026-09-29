@@ -12,6 +12,7 @@ public:
         node->val = node->next->val;
         ListNode* delNode=node->next;
         node->next = node->next->next;
+        delNode->next=nullptr;
         delete delNode;
          
     }
