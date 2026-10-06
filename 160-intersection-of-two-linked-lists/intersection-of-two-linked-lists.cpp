@@ -9,18 +9,36 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* temp=headA;
-    map<ListNode*,int> mpp;
-    while(temp!=nullptr){
-        mpp[temp]=1;
-        temp=temp->next;
+            ListNode* t1=headA;
+    ListNode* t2=headB;
+    int n1=0;
+    int n2=0;
+    while(t1!=nullptr){
+        n1++;
+        t1=t1->next;
     }
-    temp=headB;
-    while(temp!=nullptr){
-        if(mpp.find(temp)!= mpp.end())return temp;
-        temp=temp->next;   
-         }
-         return nullptr;
+    while(t2!=nullptr){
+        n2++;
+        t2=t2->next;
+    }
+    if(n1<n2){
+        return func(headA,headB,n2-n1);
+    }
+    else{
+        return func(headB,headA,n1-n2);
+    }
+    }
+    private:
+    ListNode* func(ListNode *t1, ListNode *t2,int d){
+        while(d!=0){
+            d--;
+            t2=t2->next;
+        }
+        while(t1!=t2){
+            t1=t1->next;
+            t2=t2->next;
+        }
+        return t1;
         
     }
 };
