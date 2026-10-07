@@ -12,11 +12,11 @@ public:
         if(head==nullptr || head->next==nullptr)return false;
         ListNode* fast=head;
         ListNode* slow=head;
-         while (fast->next != NULL && fast->next->next != NULL) {
-                        slow = slow->next;  
-                        fast = fast->next->next; 
-                        if(fast==slow)return true; 
+        while(fast->next!=nullptr && fast->next->next!=nullptr){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)return true;
         }
-        return false;
+       return false;
     }
 };
