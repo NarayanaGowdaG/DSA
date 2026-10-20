@@ -7,12 +7,13 @@ public:
             mpp[arr[i]]++;
         }
         int ans=-1;
-                for (int i = 1; i <= 500; i++) {
-            if (mpp[i] == i) {
-                ans = i;
+  for (auto it = mpp.begin(); it != mpp.end(); it++) {
+            if (it->first == it->second) {
+                ans = max(ans, it->first);
             }
         }
-return ans;
+
+        return ans;
         
     }
 };
