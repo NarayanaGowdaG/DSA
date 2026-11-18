@@ -6,12 +6,13 @@ class Solution {
             if(command.charAt(i)=='G'){
                 ans+="G";
             }
-            else if(command.startsWith("()", i)){
+            else if(command.charAt(i)=='('&& command.charAt(i+1)==')'){
                 ans+="o";
+                i++;
             }
-            else if (command.startsWith("(al)", i)) {
-           
-                    ans+="al";
+            else{
+           ans+="al";
+           i=i+3;
         }
         }
       return ans;  
